@@ -1,0 +1,9 @@
+struct Philosopher
+{
+	name: String,
+}
+
+impl Philosopher 
+{
+	fn
+}
