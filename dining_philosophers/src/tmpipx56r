@@ -1,0 +1,61 @@
+
+use std::thread;
+use std::sync::Mutex;
+
+struct Philosopher
+{
+	name: String,
+	left: usize,
+	right: usize,
+}
+
+impl Philosopher 
+{
+	fn new(name: &str) -> Philosopher
+	{
+		Philosopher
+		{
+			name: name.to_string(),
+			left: left
+		}
+	}
+
+	fn eat(&self)
+	{
+		println!("{} is eating.", self.name);
+
+		thread::sleep_ms(1000);
+
+		println!("{} is done eating.", self.name);
+	}
+}
+
+struct Table 
+{
+	forks: Vec<Mutex<()>>,
+}
+
+fn main()
+{
+	let philosophers = vec!
+	[
+		Philosopher::new("Baruch Spinoza"),
+		Philosopher::new("Gilles Deleuze"),
+		Philosopher::new("Karl Marx"),
+		Philosopher::new("Friedrich Nietzsche"),
+		Philosopher::new("Michel Foucault"),
+	];
+
+	let handles: Vec<_> = philosophers.into_iter().map(|p| 
+	{
+		thread::spawn(move || 
+		{
+			p.eat();
+		})
+	}).collect();
+
+	for h in handles
+	{
+		h.join().unwrap();
+	}
+}

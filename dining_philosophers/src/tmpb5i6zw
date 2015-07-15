@@ -65,7 +65,7 @@ fn main()
 
 		thread::spawn(move || 
 		{
-			p.eat(&table);
+			p.eat(&t);
 		})
 	}).collect();
 

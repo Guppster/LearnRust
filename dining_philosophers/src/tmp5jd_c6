@@ -21,7 +21,7 @@ impl Philosopher
 		}
 	}
 
-	fn eat(&self, table: &Table)
+	fn eat(&self, table: &T)
 	{
 		let _left = table.forks[self.left].lock().unwrap();
 		let _right = table.forks[self.right].lock().unwrap();
@@ -65,7 +65,7 @@ fn main()
 
 		thread::spawn(move || 
 		{
-			p.eat(&table);
+			p.eat();
 		})
 	}).collect();
 
