@@ -30,7 +30,7 @@ impl Philosopher
 
 		thread::sleep_ms(1000);
 
-		println!("\n{} is done eating.", self.name);
+		println!("{} is done eating.", self.name);
 	}
 }
 
