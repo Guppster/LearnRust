@@ -1,0 +1,12 @@
+use std::thread;
+
+fn process() 
+{
+	let handles: Vec<_> = (0..10).map(|_|
+	{
+		thread.spawn(|| {
+			let mut _x = 0;
+			f
+		})
+	})
+}

@@ -1,0 +1,9 @@
+use std::thread;
+
+fn process() 
+{
+	let handles: Vec<_> = (0..10).map(|_|
+	{
+		thread.spaw
+	})
+}
