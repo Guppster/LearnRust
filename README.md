@@ -1,7 +1,7 @@
 Learn Rust
 ----------
 
-[Learn Rust](https://doc.rust-lang.org/book/learn-rust.html)
+[Learn Rust](http://rustbyexample.com)
 
 [Rust Book](https://doc.rust-lang.org/stable/book/)
 
