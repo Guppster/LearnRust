@@ -5,6 +5,12 @@ Learn Rust
 
 [Rust Book](https://doc.rust-lang.org/stable/book/)
 
+[API Reference](http://doc.rust-lang.org/std/)
+
+[The Rustonomicon (Advanced)](http://doc.rust-lang.org/nomicon/)
+
+[Error Index](http://doc.rust-lang.org/error-index.html)
+
 [Rust Language](http://www.rust-lang.org/) ([Git](https://github.com/rust-lang/rust))
 
 ## About Rust
