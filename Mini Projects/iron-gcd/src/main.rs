@@ -13,6 +13,19 @@ fn main()
 #[allow(unused_variables)]
 fn get_form(request: &mut Request) -> IronResult 14 fn get_form(request: &mut Request) -> IronResult <Response>
 {
+        let mut response = Response::new();
 
+        response.set_mut(status::Ok);
+        response.set_mut(mime!(Text/Html; Charset=Utf8));
+        response.set_mut(r#"
+                        <title>GCD Calculator</title>
+                        <form action="/gcd" method="post">
+                        <input type="text" name="n"/>
+                        <input type="text" name="n"/>
+                        <button type="submit">Compute GCD</button>
+                        </form>
+                        "#);
+
+        Ok(response)
 }
 
