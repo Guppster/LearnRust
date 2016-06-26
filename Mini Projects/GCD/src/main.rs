@@ -32,7 +32,7 @@ fn main()
         if numbers.len() == 0
         {
                 writeln!(std::io::stderr(), "Usage: gcd NUMBER ...").unwrap();
-                std::process:exit(1);
+                std::process::exit(1);
         }
 
         let mut d = numbers[0];
