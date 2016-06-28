@@ -70,4 +70,31 @@ fn post_gcd(request: &mut Request) -> IronResult<Response>
 		
 		Some(nums) => { unparsed_numbers = nums; }
 	}
+	
+	let mut numbers = Vec::new();
+
+	for number in unparsed_numbers
+	{
+		match u64::from_str(&number)
+		{
+			Err(_) => 
+			{
+				response.set_mut(status::BadRequest);
+				response.set_mut(format!("Value for 'n' parameter not a number: {:?}\n", number);
+				return Ok(response);
+			}
+			
+			Ok(n) => { numbers.push(n); }
+		}
+	}
+
+	let mut d = numbers[0];
+	for m in &numbers[1..]
+	{
+		d = gcd(d, *m);
+	}
+
+	response.set_mut(status::Ok);
+	response.set_mut(mime!(Text/Html; Charset=Utf8));
+	response.set_mut(format!("The greatest common divisor of the numbers {:?} is <b>{}</b>\n, numbers, d))
 }
