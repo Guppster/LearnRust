@@ -42,4 +42,32 @@ fn get_form(request: &mut Request) -> IronResult <Response>
 fn post_gcd(request: &mut Request) -> IronResult<Response>
 {
 	let mut response = Response::new();
+	
+	let hashmap;
+	
+	match request.get_ref::<URLEncodedBody>
+	{
+		Err(e) => 
+		{
+			response.set_mut(status::BadRequest);
+			response.set_mut(format!("Error parsing form data: {:?}\n", e));
+			return Ok(response);
+		}
+		
+		Ok(map) => { hashmap = map; }
+	}
+	
+	let unparsed_numbers;
+
+	match hashmap.get("n")
+	{
+		None =>
+		{
+			response.set_mut(status::BadRequest);
+			response.set_mut(format!("form data has no 'n' parameter\n"));
+			return Ok(response);
+		}
+		
+		Some(nums) => { unparsed_numbers = nums; }
+	}
 }
