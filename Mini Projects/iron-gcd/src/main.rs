@@ -11,7 +11,7 @@ fn main()
 }
 
 #[allow(unused_variables)]
-fn get_form(request: &mut Request) -> IronResult 14 fn get_form(request: &mut Request) -> IronResult <Response>
+fn get_form(request: &mut Request) -> IronResult <Response>
 {
         let mut response = Response::new();
 
