@@ -1,0 +1,7 @@
+[package]
+name = "MandelbrotPlot"
+version = "0.1.0"
+authors = ["Gurpreet Singh <Guppst3r@gmail.com>"]
+
+[dependencies]
+num = "*"
