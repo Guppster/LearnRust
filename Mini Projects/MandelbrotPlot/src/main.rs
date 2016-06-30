@@ -27,7 +27,7 @@ fn parse_pair<T: FromStr>(s: &str, separator: char) -> Option<(T, T)>
 	}
 }
 
-#[test}
+#[test]
 fn test_parse_pair()
 {
 	assert_eq!(parse_pair::<i32>("",        ','), None);
