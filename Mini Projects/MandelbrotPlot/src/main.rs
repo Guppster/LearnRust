@@ -38,3 +38,19 @@ fn test_parse_pair()
 	assert_eq!(parse_pair::<f64>("0.5x",    'x'), None);
 	assert_eq!(parse_pair::<f64>("0.5x1.5", 'x'), Some((0.5, 1.5)));
 }
+
+//Return the point on the complex plane corresponding to a given pixel in the bitmap
+//Takes in 4 tuples as arguements and returns a tuple of f64s
+fn pixel_to_point(bounds: (usize, usize),
+		  pixel: (usize, usize),
+		  upper_left: (f64, f64),
+		  lower_right: (f64, f64)) -> (f64,f64)
+{
+	//The tuple.0 or tuple.1 syntax is used to access elements in the tuple
+	let (width, height) = (lower_right.0 - upper_left.0, upper_left.1 - lower_right.1);
+	
+	//Since this is the last statement in the function, it is the return
+	(upper_left.0 + pixel.0 as f64 * width / bounds.0 as f64, upper_left.1 - pixel.1 as f64 * height / bounds.1 as f64)
+}
+
+
