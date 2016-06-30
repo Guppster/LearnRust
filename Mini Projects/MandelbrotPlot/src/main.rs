@@ -93,11 +93,9 @@ fn render(pixels: &mut [u8], bounds: (usize, usize), upper_left: (f64, f64), low
 //Write the buffer 'pixels', whose dimensions are given by 'bounds', to the file named 'filename'
 fn write_bitmap(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result<(), std::io::Error>
 {
-	let output = match File::create(filename)
-	{
-		Ok(f) => { f }
-		Err(e) => { return Err(e); }
-	}
+	//The try statement returns the error code immediately if an error occurs
+	//(Cannot be used in functions that don't return Result type. Eg. Main)
+	let output = try!(match File::create(filename));
 
 	let encoder = PNGEncoder::new(output);
 	try!(encoder.encode(&pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Gray(8)));
