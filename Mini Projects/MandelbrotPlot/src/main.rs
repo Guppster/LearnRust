@@ -1,3 +1,9 @@
+extern crate image;
+
+use image::ColorType;
+use image::png::PNGEncoder;
+
+use std::fs::File;
 use std::str:FromStr;
 
 //<T: FromStr> is "For any type T that implements the FromStr trait"
@@ -82,4 +88,19 @@ fn render(pixels: &mut [u8], bounds: (usize, usize), upper_left: (f64, f64), low
 				}
 		}
 	}
+}
+
+//Write the buffer 'pixels', whose dimensions are given by 'bounds', to the file named 'filename'
+fn write_bitmap(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result<(), std::io::Error>
+{
+	let output = match File::create(filename)
+	{
+		Ok(f) => { f }
+		Err(e) => { return Err(e); }
+	}
+
+	let encoder = PNGEncoder::new(output);
+	try!(encoder.encode(&pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Gray(8)));
+	
+	Ok(());
 }
