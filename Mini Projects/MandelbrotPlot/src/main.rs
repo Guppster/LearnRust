@@ -53,4 +53,8 @@ fn pixel_to_point(bounds: (usize, usize),
 	(upper_left.0 + pixel.0 as f64 * width / bounds.0 as f64, upper_left.1 - pixel.1 as f64 * height / bounds.1 as f64)
 }
 
-
+#[test]
+fn test_pixel_to_point()
+{
+	assert_eq!(pixel_to_point((100,100), (25, 75)m (-1.0, 1.0), (1.0, -1.0)), (-0.5, -0.5));
+}
