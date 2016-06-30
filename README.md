@@ -1,9 +1,11 @@
 Learn Rust
 ----------
 
-[Learn Rust](http://rustbyexample.com)
+[Learn By Example](http://rustbyexample.com)
 
 [Rust Book](https://doc.rust-lang.org/stable/book/)
+
+[Rust for Rubyist](http://www.rustforrubyists.com/book/book.html)
 
 [API Reference](http://doc.rust-lang.org/std/)
 

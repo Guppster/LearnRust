@@ -1,10 +1,30 @@
 extern crate image;
+extern crate num;
 
+use num::Complex;
 use image::ColorType;
 use image::png::PNGEncoder;
 
+use std::io::Write;
 use std::fs::File;
-use std::str:FromStr;
+use std::str::FromStr;
+
+//Determins if the complex number is in the Mandelbrot set 
+//using at most 'limit' iterations
+fn escapes(c: Complex<f64>, limit: u32) -> Option<u32> 
+{
+	let mut z = Complex { re: 0.0, im: 0.0 };
+	for i in 0..limit 
+	{
+		z = z*z + c;
+		if z.norm_sqr() > 4.0 
+		{
+			return Some(i);
+		}
+	}
+
+	return None;
+}
 
 //<T: FromStr> is "For any type T that implements the FromStr trait"
 //This allows us to use <u32>, <f64>, etc
@@ -62,7 +82,7 @@ fn pixel_to_point(bounds: (usize, usize),
 #[test]
 fn test_pixel_to_point()
 {
-	assert_eq!(pixel_to_point((100,100), (25, 75)m (-1.0, 1.0), (1.0, -1.0)), (-0.5, -0.5));
+	assert_eq!(pixel_to_point((100,100), (25, 75), (-1.0, 1.0), (1.0, -1.0)), (-0.5, -0.5));
 }
 
 //Render a rectangle of the Mandelbrot set into a buffer of pixels
@@ -95,10 +115,36 @@ fn write_bitmap(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result
 {
 	//The try statement returns the error code immediately if an error occurs
 	//(Cannot be used in functions that don't return Result type. Eg. Main)
-	let output = try!(match File::create(filename));
+	let output = try!(File::create(filename));
 
 	let encoder = PNGEncoder::new(output);
 	try!(encoder.encode(&pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Gray(8)));
-	
-	Ok(());
+
+	Ok(())
 }
+
+fn main()
+{
+	let args: Vec<String> = std::env::args().collect();
+	
+	if args.len() != 5
+	{
+		//Here unwrap will cause the program to exit if it cannot be written? 
+		writeln!(std::io::stderr(), "Usage: mandelbrot FILE PIXELS UPPERLEFT LOWERLEFT").unwrap();
+		writeln!(std::io::stderr(), "Example: {} mandel.png 1000x750 -1.20,0.35 -1,0.20", args[0]).unwrap();
+		std::process::exit(1);
+	}
+
+	let bounds = parse_pair(&args[2], 'x').expect("error parsing image dimensions");
+	
+	let upper_left = parse_pair(&args[3], ',').expect("error parsing upper left corner point");
+
+	let lower_right = parse_pair(&args[4], ',').expect("error parsing lower right corner point");
+
+	let mut pixels = vec![0; bounds.0 * bounds.1];
+
+	render(&mut pixels, bounds, upper_left, lower_right);
+
+	write_bitmap(&args[1], &pixels, bounds).expect("error writing PNG file");
+}
+
