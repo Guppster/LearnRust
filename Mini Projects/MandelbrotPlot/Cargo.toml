@@ -6,3 +6,4 @@ authors = ["Gurpreet Singh <Guppst3r@gmail.com>"]
 [dependencies]
 num = "*"
 image = "*"
+crossbeam = "*"
