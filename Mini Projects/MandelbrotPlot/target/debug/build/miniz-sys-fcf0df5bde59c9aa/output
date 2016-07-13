@@ -18,7 +18,7 @@ CFLAGS_x86_64-unknown-linux-gnu = None
 CFLAGS_x86_64_unknown_linux_gnu = None
 HOST_CFLAGS = None
 CFLAGS = None
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-g" "-m64" "-fPIC" "-o" "/home/gsingh/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/miniz.o" "-c" "miniz.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-g" "-m64" "-fPIC" "-o" "/root/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/miniz.o" "-c" "miniz.c"
 ExitStatus(ExitStatus(0))
 TARGET = Some("x86_64-unknown-linux-gnu")
 TARGET = Some("x86_64-unknown-linux-gnu")
@@ -28,8 +28,8 @@ AR_x86_64_unknown_linux_gnu = None
 HOST_AR = None
 AR = None
 TARGET = Some("x86_64-unknown-linux-gnu")
-running: "ar" "crus" "/home/gsingh/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/libminiz.a" "/home/gsingh/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/miniz.o"
+running: "ar" "crus" "/root/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/libminiz.a" "/root/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out/miniz.o"
 ExitStatus(ExitStatus(0))
 cargo:rustc-link-lib=static=miniz
-cargo:rustc-link-search=native=/home/gsingh/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out
-cargo:root=/home/gsingh/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out
+cargo:rustc-link-search=native=/root/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out
+cargo:root=/root/Documents/Projects/LearnRust/Mini Projects/MandelbrotPlot/target/debug/build/miniz-sys-fcf0df5bde59c9aa/out
